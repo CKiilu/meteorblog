@@ -1,6 +1,4 @@
-Router.configure({
-    layoutTemplate: 'mainLayout'
-});
+Router.configure({});
 
 Router.route('/', {
     name: 'root',
