@@ -1,3 +1,12 @@
 MainPageController = BaseController.extend({
-    template: 'postsList'
+    template: 'postsList',
+    data: function () {
+        return {
+            posts: Posts.find({}, {
+                sort: {
+                    createdAt: -1
+                }
+            })
+        };
+    }
 });
