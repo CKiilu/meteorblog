@@ -17,3 +17,17 @@ Router.route('/:_id', {
     name: 'singlePost',
     controller: 'SinglePostController'
 });
+
+Router.onBeforeAction(function () {
+    if (!Meteor.user()) {
+        if (Meteor.loggingIn()) {
+            this.render(this.loadingTemplate);
+        } else {
+            this.render('accessDenied');
+        }
+    } else {
+        this.next();
+    }
+}, {
+    only: 'newPost'
+});
